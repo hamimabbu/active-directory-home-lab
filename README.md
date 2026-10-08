@@ -16,8 +16,9 @@ lab and still a work in progress.
 | THEPUNISHER | Windows 11 | Domain-joined workstation |
 | Kali | Kali Linux | Attacker machine |
 
-All three sit on a VirtualBox internal network, so the lab is fully contained. The
-Marvel hostnames just follow the course naming convention.
+The domain controller and the client sit on an isolated VirtualBox internal network,
+and the Kali machine goes on the same network for testing, so the lab is fully
+contained. The Marvel hostnames just follow the course naming convention.
 
 ```
             Internal network (isolated, no internet)
@@ -41,20 +42,20 @@ To make the practice realistic I deliberately left a few common misconfiguration
 place, the same mistakes that show up in real networks. No real passwords are in this
 repo. The lab credentials are throwaway values that only exist on the isolated network.
 
-## What I practised
+## What the lab is for
 
-For each technique I looked at both sides: running it in the lab, then working out how
-a defender would detect and prevent it.
+The lab is set up so I can work through these techniques as part of my PNPT study. For
+each one the aim is to look at both sides: how the attack works, and how a defender
+would detect and prevent it.
 
-- LLMNR and NBT-NS poisoning, capturing hashes with Responder, and why turning LLMNR
-  off removes the problem.
+- LLMNR and NBT-NS poisoning, and why turning LLMNR off removes the problem.
 - SMB relay, and how enforcing SMB signing stops it.
-- Kerberoasting the service account, cracking the ticket offline, and why long
-  service-account passwords or group managed service accounts matter.
+- Kerberoasting the service account, and why long service-account passwords or group
+  managed service accounts matter.
 - Reading the Windows security event logs to see what each attack looks like from the
   blue-team side.
 
-## Tools
+## Tools the lab uses
 
 Kali, Responder, Impacket, Nmap, Wireshark, Hashcat, and the built-in Windows and AD
 admin tools (PowerShell, Active Directory Users and Computers, Group Policy Management).
@@ -70,8 +71,10 @@ admin tools (PowerShell, Active Directory Users and Computers, Group Policy Mana
 
 ## Status and next steps
 
-- [x] Domain controller, client and attacker machines built and talking to each other
-- [x] Core AD services, users, share and a service account in place
+- [x] Domain controller built and promoted, with DNS and AD CS
+- [x] Windows 11 client joined to the domain
+- [x] Users, a service account, a file share and a Group Policy in place
+- [ ] Connect the Kali machine and work through each attack
 - [ ] Write up each attack and its detection as its own set of notes
 - [ ] Add a second client to practise lateral movement
 - [ ] Add screenshots and a cleaner network diagram
