@@ -71,6 +71,8 @@ admin tools (PowerShell, Active Directory Users and Computers, Group Policy Mana
 
 ## Status and next steps
 
+This repository contains the lab write-up, not an automated installer or VM image. Use the [validation checklist](docs/VALIDATION.md) to check domain membership, DNS, the secure channel, Group Policy and file-share access inside the VMs. Screenshots and completed attack notes are still to be added.
+
 - [x] Domain controller built and promoted, with DNS and AD CS
 - [x] Windows 11 client joined to the domain
 - [x] Users, a service account, a file share and a Group Policy in place
